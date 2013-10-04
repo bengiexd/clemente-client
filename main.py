@@ -43,7 +43,7 @@ def main():
 			if arg.has_key(dat):
 				arg[dat]()
 			else:
-				print "No se reconoce el comando ", dat
+				print "No se reconoce el comando intetar de nuevo", dat
 				exit()
 	cliente = interface.Controller("127.0.0.1",8002)
 
