@@ -3,7 +3,8 @@
 
 
 uidir = $(pkgdatadir)/ui
-ui_DATA = clemente_client.ui
+ui_DATA = clemente_client.ui \
+	config_client.ui
 
 
 ## The main script
