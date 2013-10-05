@@ -22,9 +22,23 @@ import os, sys
 
 #Comment the first line and uncomment the second before installing
 #or making the tarball (alternatively, use project variables)
-UI_FILE = "../src/clemente_client.ui"
+UI_FILE = "clemente_client.ui"
+UI_FILE_CONFIG = "config_client.ui"
 #UI_FILE = "/usr/local/share/clemente_client/ui/clemente_client.ui"
 
+
+class GUI_Config:
+	def __init__(self):
+		self.builder = Gtk.Builder()
+		self.builder.add_from_file(UI_FILE_CONFIG)
+		self.builder.connect_signals(self)
+
+		window = self.builder.get_object('window1')
+
+		window.show_all()
+
+	def destroy(window, self):
+		Gtk.main_quit()
 
 class GUI:
 	def __init__(self):
@@ -39,6 +53,9 @@ class GUI:
 
 	def destroy(window, self):
 		Gtk.main_quit()
+		
+	def on_menu_edit_config(self,menu):
+		a = GUI_Config()
 
 def main():
 	app = GUI()
