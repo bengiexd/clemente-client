@@ -45,7 +45,7 @@ class HellowWorldGTK:
         self.btnHelloWorld = self.builder.get_object("btnHelloWorld")
         #Create our dictionay and connect it
         #dic = { "on_btnHelloWorld_clicked" : self.on_btnHelloWorld_clicked,
-        # "on_window1_destroy" : gtk.main_quit }
+        # "on_window1_destroy" : gtk.main_quit}
         #self.wTree.signal_autoconnect(dic)
         self.builder.connect_signals(self)
         
