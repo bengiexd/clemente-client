@@ -19,13 +19,13 @@
 from gi.repository import Gtk, GdkPixbuf, Gdk
 import os, sys
 
-
 #Comment the first line and uncomment the second before installing
 #or making the tarball (alternatively, use project variables)
 UI_FILE = "clemente_client.ui"
 UI_FILE_CONFIG = "config_client.ui"
 #UI_FILE = "/usr/local/share/clemente_client/ui/clemente_client.ui"
 
+VALORS = {"ip":"", "port":""}
 
 class GUI_Config:
 	def __init__(self):
@@ -33,29 +33,39 @@ class GUI_Config:
 		self.builder.add_from_file(UI_FILE_CONFIG)
 		self.builder.connect_signals(self)
 
-		window = self.builder.get_object('window1')
-
-		window.show_all()
+		window_config = self.builder.get_object('window1')
+		window_config.show_all()
+		
 
 	def destroy(window, self):
 		Gtk.main_quit()
+		
+	def on_button_ok_clicked(self,button):
+		ip = self.builder.get_object('entry_ip').get_text()
+		port = self.builder.get_object('entry_port').get_text()
+		if ip is not "" and port is not "":
+			VALORS['ip'] = ip
+			VALORS['port'] = port			
+			
 
 class GUI:
 	def __init__(self):
-
 		self.builder = Gtk.Builder()
 		self.builder.add_from_file(UI_FILE)
 		self.builder.connect_signals(self)
 
 		window = self.builder.get_object('window')
-
-		window.show_all()
+		window.show_all()				
 
 	def destroy(window, self):
 		Gtk.main_quit()
 		
 	def on_menu_edit_config(self,menu):
-		a = GUI_Config()
+		GUI_Config()
+		
+	def on_menu_view_see_config(self,menu):		
+		print "valors: ",VALORS
+		
 
 def main():
 	app = GUI()
