@@ -55,7 +55,7 @@ class GUI:
 		self.builder.connect_signals(self)
 
 		window = self.builder.get_object('window')
-		window.show_all()				
+		window.show_all()
 
 	def destroy(window, self):
 		Gtk.main_quit()
@@ -65,6 +65,9 @@ class GUI:
 		
 	def on_menu_view_see_config(self,menu):		
 		print "valors: ",VALORS
+
+	def on_menu_File_quit(self,menu):
+		exit()
 		
 
 def main():
