@@ -25,6 +25,11 @@ import socket
 import sys
 import interface
 
+# import interface
+sys.path.append("GUI-Anjuta/src/")
+
+from clemente_client import Interface
+
 class Main():
 	""" ClassName  Main
     	Clase cliente para interactuar con el servidorjango
@@ -45,7 +50,8 @@ def main():
 			else:
 				print "No se reconoce el comando intetar de nuevo", dat
 				exit()
-	cliente = interface.Controller("127.0.0.1",8002)
+	#cliente = interface.Controller("127.0.0.1",8002)
+	Interface()
 
 	return 0
 

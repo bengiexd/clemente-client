@@ -1,14 +1,14 @@
 [Anjuta]
-Geometry=1356x707+4+36
+Geometry=1356x707+4+34
 
 [File Loader]
-Files=../../src/clemente_client.py#50%%%../../src/config_client.ui%%%../../src/clemente_client.ui
+Files=../../src/clemente_client.py#64%%%../../src/clemente_client.ui%%%../../src/config_client.ui
 
 [Document Manager]
 bookmarks=<?xml version="1.0" encoding="UTF-8"?>\n<bookmarks/>\n
 
 [Project Manager]
-Expand=GUI-Anjuta%%%GUI-Anjuta//src%%%GUI-Anjuta//src//bin%%%GUI-Anjuta//src//clemente_client%%%GUI-Anjuta//src//ui
+Expand=GUI-Anjuta%%%GUI-Anjuta//src%%%GUI-Anjuta//src//clemente_client%%%GUI-Anjuta//src//ui
 
 [Execution]
 Program uri=../../src/clemente_client.py

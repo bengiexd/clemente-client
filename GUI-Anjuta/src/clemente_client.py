@@ -17,14 +17,14 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk, GdkPixbuf, Gdk
-import os, sys
+import os
+import sys
 
-#Comment the first line and uncomment the second before installing
-#or making the tarball (alternatively, use project variables)
+# import libraries of directory clemente-client
+sys.path.append("../..")
+
 UI_FILE = "clemente_client.ui"
 UI_FILE_CONFIG = "config_client.ui"
-#UI_FILE = "/usr/local/share/clemente_client/ui/clemente_client.ui"
-
 VALORS = {"ip":"", "port":""}
 
 class GUI_Config:
@@ -45,7 +45,7 @@ class GUI_Config:
 		port = self.builder.get_object('entry_port').get_text()
 		if ip is not "" and port is not "":
 			VALORS['ip'] = ip
-			VALORS['port'] = port			
+			VALORS['port'] = port
 			
 
 class GUI:
@@ -66,9 +66,11 @@ class GUI:
 	def on_menu_view_see_config(self,menu):		
 		print "valors: ",VALORS
 
-	def on_menu_File_quit(self,menu):
+	def on_menu_server_quit(self,menu):
 		exit()
-		
+
+	def on_menu_server_connect(self,menu):
+		pass
 
 def main():
 	app = GUI()
