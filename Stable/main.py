@@ -23,10 +23,12 @@
 #  
 import socket
 import sys
-import interface
+#import interface
+
+#import clemente_client
 
 # import interface
-sys.path.append("GUI-Anjuta/src/")
+# sys.path.append("GUI-Anjuta/src/")
 
 from clemente_client import Interface
 
@@ -50,8 +52,10 @@ def main():
 			else:
 				print "No se reconoce el comando intetar de nuevo", dat
 				exit()
+	
 	#cliente = interface.Controller("127.0.0.1",8002)
-	Interface()
+	Interface().main()
+	
 
 	return 0
 

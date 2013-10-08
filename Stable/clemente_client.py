@@ -21,10 +21,10 @@ import os
 import sys
 
 # import libraries of directory clemente-client
-sys.path.append("../..")
+# sys.path.append("ui")
 
-UI_FILE = "clemente_client.ui"
-UI_FILE_CONFIG = "config_client.ui"
+UI_FILE = "./ui/clemente_client.ui"
+UI_FILE_CONFIG = "./ui/config_client.ui"
 VALORS = {"ip":"", "port":""}
 
 class GUI_Config:
@@ -32,7 +32,7 @@ class GUI_Config:
 		self.builder = Gtk.Builder()
 		self.builder.add_from_file(UI_FILE_CONFIG)
 		self.builder.connect_signals(self)
-
+		
 		window_config = self.builder.get_object('window1')
 		window_config.show_all()
 		
@@ -72,10 +72,16 @@ class GUI:
 	def on_menu_server_connect(self,menu):
 		pass
 
-def main():
-	app = GUI()
-	Gtk.main()
-		
+class Interface():
+	
+	def main(self):
+		app = GUI()
+		Gtk.main()
+
+"""
 if __name__ == "__main__":
 	sys.exit(main())
+"""
+
+
 
