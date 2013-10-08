@@ -20,12 +20,14 @@ from gi.repository import Gtk, GdkPixbuf, Gdk
 import os
 import sys
 
+from cliente import Cliente
+
 # import libraries of directory clemente-client
 # sys.path.append("ui")
 
 UI_FILE = "./ui/clemente_client.ui"
 UI_FILE_CONFIG = "./ui/config_client.ui"
-VALORS = {"ip":"", "port":""}
+VALORS = {"_ip":"", "_port":""}
 
 class GUI_Config:
 	def __init__(self):
@@ -44,11 +46,15 @@ class GUI_Config:
 		ip = self.builder.get_object('entry_ip').get_text()
 		port = self.builder.get_object('entry_port').get_text()
 		if ip is not "" and port is not "":
-			VALORS['ip'] = ip
-			VALORS['port'] = port
+			VALORS['_ip'] = ip
+			VALORS['_port'] = port
 			
 
 class GUI:
+	
+	_ip = "127.0.0.1"
+	_port = 8000
+	
 	def __init__(self):
 		self.builder = Gtk.Builder()
 		self.builder.add_from_file(UI_FILE)
@@ -70,7 +76,12 @@ class GUI:
 		exit()
 
 	def on_menu_server_connect(self,menu):
-		pass
+		self.connect()
+	
+	def connect(self):
+		self.cliente = Cliente(self._ip, self._port)
+		self.cliente.start()		
+		return 0 
 
 class Interface():
 	
