@@ -20,43 +20,59 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 #  
-#  
+
 import socket
 import sys
-#import interface
-
-#import clemente_client
-
-# import interface
-# sys.path.append("GUI-Anjuta/src/")
-
 from clemente_client import Interface
 
-class Main():
-	""" ClassName  Main
-    	Clase cliente para interactuar con el servidorjango
-	"""
 
 def HELP():
-	print "Ayuda para entrar a ClementeCliente;"
-def VERSION():
-	print "version de ClementeCliente 1.0"
-def IP():
-	pass	
-def main():
-	arg={"-h": HELP,"-v":VERSION, "-ip": IP}
-	if len(sys.argv)>1:
-		for dat in sys.argv[1:]:
-			if arg.has_key(dat):
-				arg[dat]()
-			else:
-				print "No se reconoce el comando intetar de nuevo", dat
-				exit()
-	
-	#cliente = interface.Controller("127.0.0.1",8002)
-	Interface().main()
-	
+	print " ------------------------"
+	print " - Help Clemente Server -"
+	print " ------------------------"
+	print
+	print "-ip : specified ip of Clemente Server"
+	print "-p  : specified port of Clemente Server"
+	print 
 
+def VERSION():
+	print "clemente-client version 1.0.1"
+
+def main():
+
+	_port = None
+	_ip = None
+	_arg={"-h": HELP, "-v":VERSION, "-p":_port, "-ip":_ip}	
+	arguments = sys.argv
+	if len(arguments)>1:
+		play = 0
+		for nroArg in range(1,len(arguments)):			
+			if play:
+				play = 0
+			else:
+				parameter = arguments[nroArg]
+				if _arg.has_key(parameter):
+					if parameter == "-p":
+						_port = arguments[nroArg+1]
+						play =1
+					elif parameter == "-ip":
+						_ip = arguments[nroArg+1]
+						play =1
+					elif parameter == "-h" or parameter == "-v":
+						_arg[parameter]()
+						exit()
+				else:
+					print "unknown parameter", parameter
+					print "main.py -h for Help"
+					return
+
+	#servidor = Server(ip=_ip,port=_port)
+	GUI = Interface()
+	if _ip:
+		GUI.set_ip_server(_ip)
+	if _port:
+		GUI.set_port_server(_port)
+	GUI.main()
 	return 0
 
 if __name__ == '__main__':

@@ -27,7 +27,8 @@ from cliente import Cliente
 
 UI_FILE = "./ui/clemente_client.ui"
 UI_FILE_CONFIG = "./ui/config_client.ui"
-VALORS = {"_ip":"", "_port":""}
+
+_CONFIG = {"_ip":"", "_port":""}
 
 class GUI_Config:
 	def __init__(self):
@@ -46,14 +47,11 @@ class GUI_Config:
 		ip = self.builder.get_object('entry_ip').get_text()
 		port = self.builder.get_object('entry_port').get_text()
 		if ip is not "" and port is not "":
-			VALORS['_ip'] = ip
-			VALORS['_port'] = port
+			_CONFIG['_ip'] = ip
+			_CONFIG['_port'] = port
 			
 
-class GUI:
-	
-	_ip = "127.0.0.1"
-	_port = 8000
+class GUI:	
 	
 	def __init__(self):
 		self.builder = Gtk.Builder()
@@ -70,7 +68,7 @@ class GUI:
 		GUI_Config()
 		
 	def on_menu_view_see_config(self,menu):		
-		print "valors: ",VALORS
+		print "valors: ",_CONFIG
 
 	def on_menu_server_quit(self,menu):
 		exit()
@@ -79,20 +77,20 @@ class GUI:
 		self.connect()
 	
 	def connect(self):
-		self.cliente = Cliente(self._ip, self._port)
-		self.cliente.start()		
-		return 0 
+		self.cliente = Cliente(_CONFIG['_ip'], _CONFIG['_port'])
+		self.cliente.start()
+		return 0
 
 class Interface():
+	
+	def set_ip_server(self,ip):
+		_CONFIG['_ip'] = ip
+		
+	def set_port_server(self,port):
+		_CONFIG['_port'] = port
 	
 	def main(self):
 		app = GUI()
 		Gtk.main()
-
-"""
-if __name__ == "__main__":
-	sys.exit(main())
-"""
-
 
 
